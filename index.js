@@ -36,7 +36,7 @@ const write_data = async (toCard, amount, fromCard,cvv, expireDate, email) => {
 
     await page.waitForSelector('.block-content-content-243 > .submit-self-314 > .submit-button-315 > .button-self-29 > .button-content-42')
     await page.click('.block-content-content-243 > .submit-self-314 > .submit-button-315 > .button-self-29 > .button-content-42')
-
+    console.log(1)
     if(!await page.waitForSelector('.mainer-content-159 > .content-self-76 > .content-column-self-77 > .block-self-235 > .block-content-accented-245')) {
         throw new Error('err')
     }
