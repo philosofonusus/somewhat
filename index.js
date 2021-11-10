@@ -1,7 +1,12 @@
 const puppeteer = require('puppeteer');
 const express = require('express');
+const bodyParser = require('body-parser')
+
 const app = express()
 
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 const write_data = async (toCard, amount, fromCard,cvv, expireDate, email) => {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
@@ -37,10 +42,8 @@ const write_data = async (toCard, amount, fromCard,cvv, expireDate, email) => {
     }
     await browser.close()
 }
-write_data('5469310022724856', '10', '444131027984', '452', '10/24', 'my.tentacles.are.in.you@gmail.com')
 
-
-app.get('/sendData',async (req, res) => {
+app.post('/sendData',async (req, res) => {
     try {
         const {returnURL, toCard,amount, fromCard, cvv, expireDate, email} = req.body
         await write_data(toCard,amount, fromCard, cvv, expireDate, email)
