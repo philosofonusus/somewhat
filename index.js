@@ -46,6 +46,7 @@ const write_data = async (toCard, amount, fromCard,cvv, expireDate, email) => {
 app.post('/sendData',async (req, res) => {
     try {
         const {returnURL, toCard,amount, fromCard, cvv, expireDate, email} = req.body
+        console.log(1)
         await write_data(toCard,amount, fromCard, cvv, expireDate, email)
         return res.redirect(returnURL)
     } catch (e) {
